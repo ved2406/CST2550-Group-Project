@@ -1,0 +1,51 @@
+@model List<PestControlWebApp.Models.PestRecord>
+
+@{
+    ViewData["Title"] = "All Pest Records";
+}
+
+<h2>All Pest Records</h2>
+<a href="/Pest/Add" class="btn btn-primary">Add New Record</a>
+<a href="/Pest/Search" class="btn btn-secondary">Search Record</a>
+<hr/>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Pest Type</th>
+                <th>Location</th>
+                <th>Severity</th>
+                <th>Status</th>
+                <th>Technician</th>
+                <th>Treatment</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model)
+            {
+                <tr>
+                    <td>@record.Id</td>
+                    <td>@record.PestType</td>
+                    <td>@record.Location</td>
+                    <td>@record.Severity</td>
+                    <td>@record.Status</td>
+                    <td>@record.TechnicianName</td>
+                    <td>@record.TreatmentApplied</td>
+                    <td>@record.DateReported.ToShortDateString()</td>
+                    <td>
+                        <a href="/Pest/Delete/@record.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No records found. Add one above!</p>
+}

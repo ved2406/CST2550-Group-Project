@@ -1,0 +1,49 @@
+@model PestControlWebApp.Models.PestRecord
+
+@{
+    ViewData["Title"] = "Add Pest Record";
+}
+
+<h2>Add New Pest Record</h2>
+<hr/>
+
+<form asp-action="Add" method="post">
+    <div class="mb-3">
+        <label>ID</label>
+        <input asp-for="Id" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Pest Type</label>
+        <input asp-for="PestType" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Location</label>
+        <input asp-for="Location" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Severity</label>
+        <select asp-for="Severity" class="form-control">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Status</label>
+        <select asp-for="Status" class="form-control">
+            <option>Pending</option>
+            <option>In Progress</option>
+            <option>Resolved</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Technician Name</label>
+        <input asp-for="TechnicianName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Treatment Applied</label>
+        <input asp-for="TreatmentApplied" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Add Record</button>
+    <a href="/Pest/Display" class="btn btn-secondary">Cancel</a>
+</form>
